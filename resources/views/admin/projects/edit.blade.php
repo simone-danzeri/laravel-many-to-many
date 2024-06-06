@@ -36,7 +36,11 @@
             <h5>Change technologies used</h5>
             @foreach ($technologies as $technology)
             <div class="form-check">
-                <input class="form-check-input" @checked(false) type="checkbox" value="{{$technology->id}}" id="tech-{{$technology->id}}" name="techs[]">
+                @if ($errors->any())
+                    <input class="form-check-input" @checked(in_array($technology->id, old('techs', []))) type="checkbox" value="{{$technology->id}}" id="tech-{{$technology->id}}" name="techs[]">
+                @else
+                    <input class="form-check-input" @checked($project->technologies->contains($technology)) type="checkbox" value="{{$technology->id}}" id="tech-{{$technology->id}}" name="techs[]">
+                @endif
                 <label class="form-check-label" for="tech-{{$technology->id}}">
                   {{ $technology->name }}
                 </label>
