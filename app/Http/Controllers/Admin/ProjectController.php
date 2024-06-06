@@ -51,7 +51,8 @@ class ProjectController extends Controller
                 'client_name' => 'required',
                 'summary' => 'max:500',
                 'cover_image' => 'nullable|image|max:256',
-                'type_id' => 'nullable|exists:types,id'
+                'type_id' => 'nullable|exists:types,id',
+                'technology_id' => 'nullable|exists:technologies,id'
             ]
         );
 
@@ -119,7 +120,8 @@ class ProjectController extends Controller
                 'client_name' => 'required',
                 'summary' => 'max:500',
                 'cover_image' => 'nullable|image|max:256',
-                'type_id' => 'nullable|exists:types,id'
+                'type_id' => 'nullable|exists:types,id',
+                'technology_id' => 'nullable|exists:technologies,id'
             ]
         );
         $formData = $request->all();
