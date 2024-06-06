@@ -97,7 +97,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -131,9 +132,14 @@ class ProjectController extends Controller
             }
             $img_path = Storage::disk('public')->put('project_images', $formData['cover_image']);
             $formData['cover_image'] = $img_path;
-        }
+        };
         $project['slug'] = Str::slug($formData['name'], '-');
         $project->update($formData);
+        if ($request->has('techs')) {
+            $project->technologies()->sync($formData['techs']);
+        } else {
+            $project->technologies()->detach();
+        }
         session()->flash('message', 'Project successfully updated.');
         return redirect()->route('admin.projects.show', ['project' => $project->slug]);
     }
