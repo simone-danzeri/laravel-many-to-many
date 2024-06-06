@@ -31,6 +31,17 @@
                 @endforeach
             </select>
         </div>
+        <div class="mb-3 mt-4">
+            <h5>Technologies</h5>
+            @foreach ($technologies as $technology)
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="{{$technology->id}}" id="tech-{{$technology->id}}">
+                <label class="form-check-label" for="tech-{{$technology->id}}">
+                  {{ $technology->name }}
+                </label>
+            </div>
+            @endforeach
+        </div>
         <div class="mb-3">
             <label for="client_name" class="form-label">Client Name</label>
             <input type="text" class="form-control" id="client_name" name="client_name" value="{{ old('client_name') }}">

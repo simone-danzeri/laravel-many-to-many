@@ -22,6 +22,11 @@
     @else
         <div class="my-2"><strong>Project type</strong>: No project type</div>
     @endif
+    @if ($project->technology)
+        <div class="my-2"><strong>Project technologies</strong>: {{ $project->technology->name }}</div>
+    @else
+    <div class="my-2"><strong>Project technologies</strong>: No project technologies</div>
+    @endif
     @if ($project->summary)
         <p class="my-3"><strong>Summary of this project</strong>: {{ $project->summary }}</p>
     @else
