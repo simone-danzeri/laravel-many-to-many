@@ -35,7 +35,7 @@
             <h5>Technologies</h5>
             @foreach ($technologies as $technology)
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="{{$technology->id}}" id="tech-{{$technology->id}}">
+                <input class="form-check-input" type="checkbox" value="{{$technology->id}}" id="tech-{{$technology->id}}" name="techs[]">
                 <label class="form-check-label" for="tech-{{$technology->id}}">
                   {{ $technology->name }}
                 </label>
